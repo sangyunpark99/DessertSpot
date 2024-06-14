@@ -6,11 +6,13 @@ import SignUpPage from './pages/SignUpPage';
 import ProfilePage from './pages/ProfilePage';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import GlobalStyle from "./styles/GlobalStyle";
 
 function App() {
   return (
       <Router>
           <div>
+              <GlobalStyle/>
               <Header/>
               <Routes>
                   <Route exact path="/" component={HomePage} />
