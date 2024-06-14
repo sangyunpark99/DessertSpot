@@ -1,16 +1,17 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../store/authSlice';
+import { signup } from '../store/slices/authSlice';
 
-function LoginForm() {
+function RegisterForm() {
     const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
     const { error } = useSelector((state) => state.auth);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(login({ username, password }));
+        dispatch(signup({ username, email, password }));
     };
 
     return (
@@ -25,6 +26,15 @@ function LoginForm() {
                 />
             </div>
             <div>
+                <label>Email</label>
+                <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+            </div>
+            <div>
                 <label>Password</label>
                 <input
                     type="password"
@@ -33,10 +43,10 @@ function LoginForm() {
                     required
                 />
             </div>
-            <button type="submit">Login</button>
+            <button type="submit">SignUp</button>
             {error && <p>{error}</p>}
         </form>
     );
 }
 
-export default LoginForm;
+export default RegisterForm;
