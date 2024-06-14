@@ -33,7 +33,7 @@ const getCurrentUser = () => {
 }
 
 export default {
-    register,
+    signup,
     login,
     logout,
     getCurrentUser
