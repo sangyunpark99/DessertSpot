@@ -5,7 +5,7 @@ export const signup = createAsyncThunk(
     'auth/signup',
     async ({ username, email, password }, thunkAPI) => {
         try {
-            const response = await AuthService.register(username, email, password);
+            const response = await AuthService.signup(username, email, password);
             return response.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data);
@@ -41,10 +41,10 @@ const authSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(register.fulfilled, (state, action) => {
+            .addCase(signup.fulfilled, (state, action) => {
                 state.isLoggedIn = false;
             })
-            .addCase(register.rejected, (state, action) => {
+            .addCase(signup.rejected, (state, action) => {
                 state.error = action.payload;
             })
             .addCase(login.fulfilled, (state, action) => {
