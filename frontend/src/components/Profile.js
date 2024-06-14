@@ -6,7 +6,6 @@ function Profile() {
 
     return (
         <div>
-            <h1>Profile</h1>
             {user && (
                 <div>
                     <p><strong>Username:</strong> {user.username}</p>

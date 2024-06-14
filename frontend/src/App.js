@@ -4,26 +4,49 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import ProfilePage from './pages/ProfilePage';
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import GlobalStyle from "./styles/GlobalStyle";
+import BottomNavBar from './components/BottomNavBar';
+import GlobalStyle from './styles/GlobalStyle';
+import styled from 'styled-components';
+
+const AppContainer = styled.div`
+  width: 100%;
+  max-width: 480px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 0 auto;
+`;
+
+const ContentContainer = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 60px; /* Make room for the nav bar */
+  width: 100%;
+`;
 
 function App() {
-  return (
-      <Router>
-          <div>
-              <GlobalStyle/>
-              <Header/>
-              <Routes>
-                  <Route exact path="/" component={HomePage} />
-                  <Route path="/login" component={LoginPage} />
-                  <Route path="/register" component={SignUpPage} />
-                  <Route path="/profile" component={ProfilePage} />
-              </Routes>
-              <Footer/>
-          </div>
-      </Router>
-  );
+    return (
+        <Router>
+            <GlobalStyle />
+            <AppContainer>
+                <ContentContainer>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/signUp" element={<SignUpPage />} />
+                        <Route path="/profile" element={<ProfilePage />} />
+                    </Routes>
+                </ContentContainer>
+                <BottomNavBar />
+            </AppContainer>
+        </Router>
+    );
 }
 
 export default App;
