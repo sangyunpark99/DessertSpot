@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
-import ProfilePage from './pages/ProfilePage';
+import MyPage from './pages/MyPage';
 import BottomNavBar from './components/BottomNavBar';
 import GlobalStyle from './styles/GlobalStyle';
 import styled from 'styled-components';
@@ -40,7 +40,7 @@ function App() {
                         <Route path="/" element={<HomePage />} />
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/signUp" element={<SignUpPage />} />
-                        <Route path="/profile" element={<ProfilePage />} />
+                        <Route path="/profile" element={<MyPage />} />
                     </Routes>
                 </ContentContainer>
                 <BottomNavBar />
