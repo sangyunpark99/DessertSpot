@@ -2,6 +2,8 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.3.0'
     id 'io.spring.dependency-management' version '1.1.5'
+    id 'jacoco'
+    id "org.asciidoctor.jvm.convert" version "3.3.2"
 }
 
 group = 'sanyunpark99'
@@ -15,10 +17,8 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
-}
 
-repositories {
-    mavenCentral()
+    asciidoctorExt
 }
 
 dependencies {
@@ -30,9 +30,118 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+jacoco {
+    toolVersion = "0.8.8"
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'METHOD'
+
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                //minimum = 0.50
+            }
+
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                //minimum = 0.70
+            }
+
+            excludes = [
+                    '*.*Exception*',
+                    '*.*Response*',
+                    '*.*Request*',
+                    '*.*Application*',
+                    '*.*Dto*',
+                    '*.*Configuration*'
+            ]
+        }
+    }
+}
+
+jacocoTestReport {
+    reports {
+        html.required = true
+        html.destination file("./build/jacoco/index.html")
+    }
+
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it,
+                    exclude: [
+                            '**/*Application*',
+                            '**/*Exception*',
+                            '**/*Response*',
+                            '**/*Request*',
+                            '**/*Dto*',
+                            '**/*Configuration*'
+                    ])
+        }))
+    }
+
+    finalizedBy 'jacocoTestCoverageVerification'
+}
+
+task jacocoTestCoverage(type: Test) {
+    group 'verification'
+    description 'Runs the unit tests with coverage'
+
+    dependsOn(':test',
+            ':jacocoTestReport',
+            ':jacocoTestCoverageVerification')
+
+    tasks['jacocoTestReport'].mustRunAfter(tasks['test'])
+    tasks['jacocoTestCoverageVerification'].mustRunAfter(tasks['jacocoTestReport'])
+}
+
+ext {
+    snippetsDir = file('build/generated-snippets')
+}
+
+asciidoctor {
+    inputs.dir snippetsDir
+    configurations 'asciidoctorExt'
+    dependsOn test
+}
+
+tasks.register('copyApiDocument', Copy) {
+    dependsOn asciidoctor
+    doFirst {
+        delete file("src/main/resources/static/docs")
+    }
+    from asciidoctor.outputDir
+    into file("src/main/resources/static/docs")
+}
+
+repositories {
+    mavenCentral()
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+test {
+    outputs.dir snippetsDir
+    finalizedBy 'jacocoTestReport'
+}
+
+build {
+    dependsOn copyApiDocument
+}
+
+bootJar {
+    dependsOn asciidoctor // (1)
+    from("${asciidoctor.outputDir}") { // (2)
+        into 'static/docs'
+    }
 }
