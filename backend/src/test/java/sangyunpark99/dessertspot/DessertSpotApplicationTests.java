@@ -1,4 +1,4 @@
-package sanyunpark99.dessertspot;
+package sangyunpark99.dessertspot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

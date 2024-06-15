@@ -1,4 +1,4 @@
-package sanyunpark99.dessertspot.exception;
+package sangyunpark99.dessertspot.exception;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatusCode;

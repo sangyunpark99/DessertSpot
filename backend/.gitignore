@@ -38,3 +38,6 @@ out/
 
 ### log ###
 *.log
+
+### application.yml ###
+application.yml

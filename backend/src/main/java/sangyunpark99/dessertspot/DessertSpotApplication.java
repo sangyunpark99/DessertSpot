@@ -1,4 +1,4 @@
-package sanyunpark99.dessertspot;
+package sangyunpark99.dessertspot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

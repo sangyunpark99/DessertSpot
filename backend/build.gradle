@@ -6,7 +6,7 @@ plugins {
     id "org.asciidoctor.jvm.convert" version "3.3.2"
 }
 
-group = 'sanyunpark99'
+group = 'sangyunpark99'
 version = '0.0.1-SNAPSHOT'
 
 java {
@@ -25,6 +25,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    //slack-appender
+    implementation group: 'com.github.maricn', name: 'logback-slack-appender', version: '1.6.1'
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'

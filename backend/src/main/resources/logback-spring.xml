@@ -57,6 +57,20 @@
         </encoder>
     </appender>
 
+    <appender name="SLACK_APPENDER" class="sangyunpark99.dessertspot.log.SlackAppender">
+    </appender>
+
+    <appender name="ASYNC_SLACK_APPENDER" class="ch.qos.logback.classic.AsyncAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <appender-ref ref="SLACK_APPENDER"/>
+    </appender>
+
+    <root>
+        <appender-ref ref="ASYNC_SLACK_APPENDER"/>
+    </root>
+
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="INFO_FILE"/>
