@@ -2,7 +2,6 @@ package sangyunpark99.dessertspot.exception;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatusCode;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -24,19 +23,24 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return super.handleExceptionInternal(ex, body, headers, statusCode, request);
     }
 
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(
+            final MethodArgumentNotValidException e,
+            final HttpHeaders headers,
+            final HttpStatusCode status,
+            final WebRequest request
+    ) {
+
+        ErrorCode errorCode = ErrorCode.REQUEST_VALUE_INVALID;
+
+        return ResponseEntity.status(errorCode.getHttpStatus())
+                .body(ErrorResponse.toResponseEntity(errorCode));
+    }
+
     @ExceptionHandler(CustomException.class)
     protected ResponseEntity<ErrorResponse> handleCustomException(CustomException e){
 
         return ResponseEntity.status(e.getErrorCode().getHttpStatus())
                 .body(ErrorResponse.toResponseEntity(e.getErrorCode()));
-    }
-
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    protected ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e){
-
-        ErrorCode errorCode = ErrorCode.INPUT_VALUE_INVALID;
-
-        return ResponseEntity.status(errorCode.getHttpStatus())
-                .body(ErrorResponse.toResponseEntity(errorCode));
     }
 }

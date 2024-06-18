@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 @RequiredArgsConstructor
 public enum ErrorCode {
 
-    INPUT_VALUE_INVALID(HttpStatus.BAD_REQUEST, "CM-001", "입력값이 올바르지 않습니다."),
+    REQUEST_VALUE_INVALID(HttpStatus.BAD_REQUEST, "CM-001", "요청한 값이 올바르지 않습니다."),
 
     USER_ALREADY_EXIST(HttpStatus.BAD_REQUEST, "USER-001", "이미 존재 하는 사용자 입니다."),
     USER_NOT_FOUND(HttpStatus.BAD_REQUEST, "USER-002", "존재 하지 않는 사용자 입니다."),
