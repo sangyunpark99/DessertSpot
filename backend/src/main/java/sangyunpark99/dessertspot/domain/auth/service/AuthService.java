@@ -5,10 +5,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sangyunpark99.dessertspot.domain.auth.dto.login.LoginRequest;
-import sangyunpark99.dessertspot.domain.auth.dto.login.LoginResponse;
-import sangyunpark99.dessertspot.domain.auth.dto.signup.SignUpResponse;
-import sangyunpark99.dessertspot.domain.auth.dto.signup.SignupRequest;
+import sangyunpark99.dessertspot.domain.auth.dto.login.LoginRequestDto;
+import sangyunpark99.dessertspot.domain.auth.dto.login.LoginResponseDto;
+import sangyunpark99.dessertspot.domain.auth.dto.signup.SignUpResponseDto;
+import sangyunpark99.dessertspot.domain.auth.dto.signup.SignupRequestDto;
 import sangyunpark99.dessertspot.domain.user.entity.Role;
 import sangyunpark99.dessertspot.domain.user.entity.User;
 import sangyunpark99.dessertspot.domain.user.repository.UserRepository;
@@ -28,7 +28,7 @@ public class AuthService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Transactional
-    public SignUpResponse signup(SignupRequest request) {
+    public SignUpResponseDto signup(SignupRequestDto request) {
         User user = User.builder()
                 .email(request.email())
                 .password(bCryptPasswordEncoder.encode(request.password()))
@@ -43,11 +43,11 @@ public class AuthService {
 
         HashMap<String, String> tokens = getTokens(request.username(), user.getEmail(), Role.USER.toString());
 
-        return new SignUpResponse(tokens.get(ACCESS_TOKEN), tokens.get(REFRESH_TOKEN));
+        return new SignUpResponseDto(tokens.get(ACCESS_TOKEN), tokens.get(REFRESH_TOKEN));
     }
 
     @Transactional
-    public LoginResponse login(LoginRequest request) {
+    public LoginResponseDto login(LoginRequestDto request) {
 
         User user = userRepository.findByEmail(request.email())
                 .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
@@ -58,7 +58,7 @@ public class AuthService {
 
         HashMap<String, String> tokens = getTokens(user.getUsername(), user.getEmail(), Role.USER.toString());
 
-        return new LoginResponse(tokens.get(ACCESS_TOKEN), tokens.get(REFRESH_TOKEN));
+        return new LoginResponseDto(tokens.get(ACCESS_TOKEN), tokens.get(REFRESH_TOKEN));
     }
 
     private HashMap<String, String> getTokens(final String username, final String email, final String role) {
