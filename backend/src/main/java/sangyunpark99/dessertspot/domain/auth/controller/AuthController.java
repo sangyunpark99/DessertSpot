@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sangyunpark99.dessertspot.domain.auth.dto.login.LoginRequest;
-import sangyunpark99.dessertspot.domain.auth.dto.login.LoginResponse;
-import sangyunpark99.dessertspot.domain.auth.dto.signup.SignUpResponse;
-import sangyunpark99.dessertspot.domain.auth.dto.signup.SignupRequest;
+import sangyunpark99.dessertspot.domain.auth.dto.login.LoginRequestDto;
+import sangyunpark99.dessertspot.domain.auth.dto.login.LoginResponseDto;
+import sangyunpark99.dessertspot.domain.auth.dto.signup.SignUpResponseDto;
+import sangyunpark99.dessertspot.domain.auth.dto.signup.SignupRequestDto;
 import sangyunpark99.dessertspot.domain.auth.service.AuthService;
 
 @Slf4j
@@ -23,14 +23,14 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/signup")
-    public ResponseEntity<SignUpResponse> signup(@RequestBody @Valid SignupRequest request) {
-        SignUpResponse response = authService.signup(request);
+    public ResponseEntity<SignUpResponseDto> signup(@RequestBody @Valid SignupRequestDto request) {
+        SignUpResponseDto response = authService.signup(request);
         return ResponseEntity.ok().body(response);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody @Valid LoginRequest request) {
-        LoginResponse response = authService.login(request);
+    public ResponseEntity<LoginResponseDto> login(@RequestBody @Valid LoginRequestDto request) {
+        LoginResponseDto response = authService.login(request);
         return ResponseEntity.ok().body(response);
     }
 }

@@ -19,10 +19,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import sangyunpark99.dessertspot.domain.auth.controller.AuthController;
-import sangyunpark99.dessertspot.domain.auth.dto.login.LoginRequest;
-import sangyunpark99.dessertspot.domain.auth.dto.login.LoginResponse;
-import sangyunpark99.dessertspot.domain.auth.dto.signup.SignUpResponse;
-import sangyunpark99.dessertspot.domain.auth.dto.signup.SignupRequest;
+import sangyunpark99.dessertspot.domain.auth.dto.login.LoginRequestDto;
+import sangyunpark99.dessertspot.domain.auth.dto.login.LoginResponseDto;
+import sangyunpark99.dessertspot.domain.auth.dto.signup.SignUpResponseDto;
+import sangyunpark99.dessertspot.domain.auth.dto.signup.SignupRequestDto;
 import sangyunpark99.dessertspot.domain.auth.service.AuthService;
 import sangyunpark99.dessertspot.exception.GlobalExceptionHandler;
 
@@ -53,11 +53,11 @@ public class AuthControllerTest {
     @Test
     void 회원가입을_성공한다() throws Exception {
         //given
-        final SignupRequest request = new SignupRequest("abc@abc.com", "abcdef", "abc");
-        final SignUpResponse response = new SignUpResponse("abcd", "efgh");
+        final SignupRequestDto request = new SignupRequestDto("abc@abc.com", "abcdef", "abc");
+        final SignUpResponseDto response = new SignUpResponseDto("abcd", "efgh");
 
         //when
-        when(authService.signup(any(SignupRequest.class))).thenReturn(response);
+        when(authService.signup(any(SignupRequestDto.class))).thenReturn(response);
 
         //then
         mockMvc.perform(post("/auth/signup")
@@ -71,11 +71,11 @@ public class AuthControllerTest {
     @Test
     void 이메일이_존재하지않아_회원가입을_실패한다() throws Exception {
         //given
-        final SignupRequest request = new SignupRequest("", "abcdef", "abc");
-        final SignUpResponse response = new SignUpResponse("abcd", "efgh");
+        final SignupRequestDto request = new SignupRequestDto("", "abcdef", "abc");
+        final SignUpResponseDto response = new SignUpResponseDto("abcd", "efgh");
 
         //whem
-        when(authService.signup(any(SignupRequest.class))).thenReturn(response);
+        when(authService.signup(any(SignupRequestDto.class))).thenReturn(response);
 
         //then
         mockMvc.perform(post("/auth/signup")
@@ -87,11 +87,11 @@ public class AuthControllerTest {
     @Test
     void 이메일이_형식이_올바르지않아_회원가입을_실패한다() throws Exception {
         //given
-        final SignupRequest request = new SignupRequest("abc.com", "abcdef", "abc");
-        final SignUpResponse response = new SignUpResponse("abcd", "efgh");
+        final SignupRequestDto request = new SignupRequestDto("abc.com", "abcdef", "abc");
+        final SignUpResponseDto response = new SignUpResponseDto("abcd", "efgh");
 
         //when
-        when(authService.signup(any(SignupRequest.class))).thenReturn(response);
+        when(authService.signup(any(SignupRequestDto.class))).thenReturn(response);
 
         //then
         mockMvc.perform(post("/auth/signup")
@@ -103,11 +103,11 @@ public class AuthControllerTest {
     @Test
     void 비밀번호_형식이_5글자보다적어_회원가입을_실패한다() throws Exception {
         //given
-        final SignupRequest request = new SignupRequest("abc.com", "abc", "abc");
-        final SignUpResponse response = new SignUpResponse("abcd", "efgh");
+        final SignupRequestDto request = new SignupRequestDto("abc.com", "abc", "abc");
+        final SignUpResponseDto response = new SignUpResponseDto("abcd", "efgh");
 
         //when
-        when(authService.signup(any(SignupRequest.class))).thenReturn(response);
+        when(authService.signup(any(SignupRequestDto.class))).thenReturn(response);
 
         //then
         mockMvc.perform(post("/auth/signup")
@@ -119,11 +119,11 @@ public class AuthControllerTest {
     @Test
     void 비밀번호가_존재하지않아_회원가입을_실패한다() throws Exception {
         //given
-        final SignupRequest request = new SignupRequest("abc@abc.com", "", "abc");
-        final SignUpResponse response = new SignUpResponse("abcd", "efgh");
+        final SignupRequestDto request = new SignupRequestDto("abc@abc.com", "", "abc");
+        final SignUpResponseDto response = new SignUpResponseDto("abcd", "efgh");
 
         //when
-        when(authService.signup(any(SignupRequest.class))).thenReturn(response);
+        when(authService.signup(any(SignupRequestDto.class))).thenReturn(response);
 
         //then
         mockMvc.perform(post("/auth/signup")
@@ -135,11 +135,11 @@ public class AuthControllerTest {
     @Test
     void 유저이름이_존재하지않아_회원가입을_실패한다() throws Exception {
         //given
-        final SignupRequest request = new SignupRequest("abc@abc.com", "abcdef", "");
-        final SignUpResponse response = new SignUpResponse("abcd", "efgh");
+        final SignupRequestDto request = new SignupRequestDto("abc@abc.com", "abcdef", "");
+        final SignUpResponseDto response = new SignUpResponseDto("abcd", "efgh");
 
         //when
-        when(authService.signup(any(SignupRequest.class))).thenReturn(response);
+        when(authService.signup(any(SignupRequestDto.class))).thenReturn(response);
 
         //then
         mockMvc.perform(post("/auth/signup")
@@ -151,11 +151,11 @@ public class AuthControllerTest {
     @Test
     void 로그인을_성공한다() throws Exception {
         //given
-        final LoginRequest request = new LoginRequest("abc@abc.com", "abcdef");
-        final LoginResponse response = new LoginResponse("abcd", "efgh");
+        final LoginRequestDto request = new LoginRequestDto("abc@abc.com", "abcdef");
+        final LoginResponseDto response = new LoginResponseDto("abcd", "efgh");
 
         //when
-        when(authService.login(any(LoginRequest.class))).thenReturn(response);
+        when(authService.login(any(LoginRequestDto.class))).thenReturn(response);
 
         //then
         mockMvc.perform(post("/auth/login")
@@ -169,11 +169,11 @@ public class AuthControllerTest {
     @Test
     void 이메일이_존재하지않아_로그인을_실패한다() throws Exception {
         //given
-        final LoginRequest request = new LoginRequest("", "abcdef");
-        final LoginResponse response = new LoginResponse("abcd", "efgh");
+        final LoginRequestDto request = new LoginRequestDto("", "abcdef");
+        final LoginResponseDto response = new LoginResponseDto("abcd", "efgh");
 
         //when
-        when(authService.login(any(LoginRequest.class))).thenReturn(response);
+        when(authService.login(any(LoginRequestDto.class))).thenReturn(response);
 
         //then
         mockMvc.perform(post("/auth/login")
@@ -185,11 +185,11 @@ public class AuthControllerTest {
     @Test
     void 비밀번호가_존재하지않아_로그인을_실패한다() throws Exception {
         //given
-        final LoginRequest request = new LoginRequest("abc@abc.com", "");
-        final LoginResponse response = new LoginResponse("abcd", "efgh");
+        final LoginRequestDto request = new LoginRequestDto("abc@abc.com", "");
+        final LoginResponseDto response = new LoginResponseDto("abcd", "efgh");
 
         //when
-        when(authService.login(any(LoginRequest.class))).thenReturn(response);
+        when(authService.login(any(LoginRequestDto.class))).thenReturn(response);
 
         //then
         mockMvc.perform(post("/auth/login")
@@ -201,11 +201,11 @@ public class AuthControllerTest {
     @Test
     void 이메일이_형식이_올바르지않아_로그인을_실패한다() throws Exception {
         //given
-        final LoginRequest request = new LoginRequest("abc.com", "abcdef");
-        final LoginResponse response = new LoginResponse("abcd", "efgh");
+        final LoginRequestDto request = new LoginRequestDto("abc.com", "abcdef");
+        final LoginResponseDto response = new LoginResponseDto("abcd", "efgh");
 
         //when
-        when(authService.login(any(LoginRequest.class))).thenReturn(response);
+        when(authService.login(any(LoginRequestDto.class))).thenReturn(response);
 
         //then
         mockMvc.perform(post("/auth/login")
@@ -217,11 +217,11 @@ public class AuthControllerTest {
     @Test
     void 비밀번호_형식이_5글자보다적어_로그인을_실패한다() throws Exception {
         //given
-        final LoginRequest request = new LoginRequest("abc@abc.com", "abc");
-        final LoginResponse response = new LoginResponse("abcd", "efgh");
+        final LoginRequestDto request = new LoginRequestDto("abc@abc.com", "abc");
+        final LoginResponseDto response = new LoginResponseDto("abcd", "efgh");
 
         //when
-        when(authService.login(any(LoginRequest.class))).thenReturn(response);
+        when(authService.login(any(LoginRequestDto.class))).thenReturn(response);
 
         //then
         mockMvc.perform(post("/auth/login")
