@@ -2,6 +2,8 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
+import banner from "../assets/banner.png";
+import banner2 from "../assets/banner2.png";
 import BannerItem from "./BannerItem";
 
 const SliderContainer = styled.div`
@@ -44,8 +46,8 @@ const BannerCarousel = () => {
     }
 
     const images = [
-        {src:"https://rimage.gnst.jp/livejapan.com/public/article/detail/a/00/03/a0003580/img/basic/a0003580_main.jpg", alt:"dessert"},
-        {src:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5d9EW6EvcKbeIMGqYr9FelmkBNYA0y6S5Jg&s", alt:"dessert"},
+        {src:banner, alt:"dessert"},
+        {src:banner2, alt:"dessert"},
     ]
 
     return (
