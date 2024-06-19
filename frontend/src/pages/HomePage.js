@@ -9,6 +9,7 @@ import madeleine from "../assets/madeleine.png";
 import macaron from "../assets/macaron.png";
 import pudding from "../assets/pudding.png";
 import pie from "../assets/pie.png";
+import sale from "../assets/sale.png"
 
 const PageContainer = styled.div`
   width: 100%;
@@ -70,6 +71,8 @@ const HomePage = () => {
             label: "마카롱"
         },
         {
+            imageUrl: sale,
+            label: "세일"
         }
     ];
 
