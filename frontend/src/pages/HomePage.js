@@ -1,6 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import BannerCarousel from "../components/BannerCarousel";
+import Categories from "../components/Categories";
+import bread from "../assets/bread.png";
+import cake from "../assets/cake.png";
+import cookie from "../assets/cookie.png";
+import madeleine from "../assets/madeleine.png";
+import macaron from "../assets/macaron.png";
+import pudding from "../assets/pudding.png";
+import pie from "../assets/pie.png";
 
 const PageContainer = styled.div`
   width: 100%;
@@ -19,19 +27,6 @@ const Banner = styled.div`
   background-color: black;
 `;
 
-const Categories = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-`;
-
-const Category = styled.div`
-  width: 22%;
-  text-align: center;
-  margin-bottom: 1rem;
-`;
-
 const Products = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -44,45 +39,46 @@ const BannerItem = styled.div`
 `;
 
 const HomePage = () => {
+
+    const data = [ // 디저트 종류 뭐있어? 알려줘 애기, 이런 느낌으로?
+        {
+            imageUrl:cake,
+            label:"케이크"
+        },
+        {
+            imageUrl:pie,
+            label:"파이&타르트"
+        },
+        {
+            imageUrl:madeleine,
+            label:"구움과자"
+        },
+        {
+            imageUrl:cookie,
+            label:"쿠키"
+        },
+        {
+            imageUrl: pudding,
+            label:"푸딩"
+        },
+        {
+            imageUrl:bread,
+            label:"빵"
+        },
+        {
+            imageUrl: macaron,
+            label: "마카롱"
+        },
+        {
+        }
+    ];
+
     return (
         <PageContainer>
             <Banner>
                 <BannerCarousel/>
             </Banner>
-            <Categories>
-                <Category>
-                    <img src="https://via.placeholder.com/50" alt="Category" />
-                    <div>남자패션</div>
-                </Category>
-                <Category>
-                    <img src="https://via.placeholder.com/50" alt="Category" />
-                    <div>의류</div>
-                </Category>
-                <Category>
-                    <img src="https://via.placeholder.com/50" alt="Category" />
-                    <div>주얼리</div>
-                </Category>
-                <Category>
-                    <img src="https://via.placeholder.com/50" alt="Category" />
-                    <div>패션소품</div>
-                </Category>
-                <Category>
-                    <img src="https://via.placeholder.com/50" alt="Category" />
-                    <div>라이프</div>
-                </Category>
-                <Category>
-                    <img src="https://via.placeholder.com/50" alt="Category" />
-                    <div>신발</div>
-                </Category>
-                <Category>
-                    <img src="https://via.placeholder.com/50" alt="Category" />
-                    <div>디지털/핸드폰</div>
-                </Category>
-                <Category>
-                    <img src="https://via.placeholder.com/50" alt="Category" />
-                    <div>가방</div>
-                </Category>
-            </Categories>
+            <Categories data={data}/>
             <div>회원님을 위한 추천 상품</div>
             <Products>
                 <Product>
