@@ -11,6 +11,7 @@ import styled from 'styled-components';
 const AppContainer = styled.div`
   width: 100%;
   max-width: 480px;
+  height: 100vh;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   flex: 1;
@@ -18,7 +19,14 @@ const AppContainer = styled.div`
   flex-direction: column;
   position: relative;
   margin: 0 auto;
+  overflow: scroll;
+
+  //&::-webkit-scrollbar {
+  //  display: none;
+  //}
 `;
+
+
 
 const ContentContainer = styled.div`
   flex: 1;
