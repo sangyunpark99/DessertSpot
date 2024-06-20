@@ -21,9 +21,9 @@ const AppContainer = styled.div`
   margin: 0 auto;
   overflow: scroll;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  //&::-webkit-scrollbar {
+  //  display: none;
+  //}
 `;
 
 

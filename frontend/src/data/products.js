@@ -34,6 +34,33 @@ const products = [
     },{
         imageUrl: product8,
         label: "케이크"
+    },
+    {
+        imageUrl: product1,
+        label: "마들렌"
+    },
+    {
+        imageUrl: product2,
+        label: "케이크"
+    },
+    {
+        imageUrl: product3,
+        label: "케이크"
+    },{
+        imageUrl: product4,
+        label: "케이크"
+    },{
+        imageUrl: product5,
+        label: "케이크"
+    },{
+        imageUrl: product6,
+        label: "케이크"
+    },{
+        imageUrl: product7,
+        label: "케이크"
+    },{
+        imageUrl: product8,
+        label: "케이크"
     }
 
 ];
