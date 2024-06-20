@@ -2,8 +2,8 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import banner from "../assets/banner.png";
-import banner2 from "../assets/banner2.png";
+import banner from "../assets/banner/banner.png";
+import banner2 from "../assets/banner/banner2.png";
 import BannerItem from "./BannerItem";
 
 const SliderContainer = styled.div`

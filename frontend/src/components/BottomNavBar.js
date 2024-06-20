@@ -5,15 +5,16 @@ import { Home, List, Search, User } from 'react-feather';
 
 const NavBar = styled.nav`
   width: 100%;
+  max-width: 480px;
   height: 60px;
   background-color: #fff;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  left: 0;
+  left: 50;
   z-index: 1000;
 `;
 
