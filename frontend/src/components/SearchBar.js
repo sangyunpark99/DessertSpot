@@ -12,9 +12,13 @@ const SearchBarContainer = styled.div`
   top: 0;
   z-index: 1;
   background-color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const SearchBarButton = styled.div`
+  width: 90%;
   height: 100%;
   background-color: #EEEEEE;
   border-radius: 5px;
@@ -28,6 +32,7 @@ const SearchButtonLeftContainer = styled.div`
   display: flex;
   align-items: center;
   font-size: 16px;
+  margin-right: 2px;
 `;
 
 const SearchButtonText = styled.div`
@@ -43,8 +48,8 @@ const SearchBar = () => {
                     <IoIosSearch size={18}/>
                     <SearchButtonText>디저트 모두 모여라</SearchButtonText>
                 </SearchButtonLeftContainer>
-                <PiShoppingCartLight size={20}/>
             </SearchBarButton>
+                <PiShoppingCartLight size={24}/>
         </SearchBarContainer>
     );
 };
