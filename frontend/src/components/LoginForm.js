@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../store/slices/authSlice';
 import styled from "styled-components";
+import {useMutation} from "react-query";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
+import {AUTH_LOGIN} from "../constants/urls";
 
 const Form = styled.form`
   display: flex;
@@ -12,11 +14,6 @@ const FormGroup = styled.div`
   margin-bottom: 1rem;
 `;
 
-const Label = styled.label`
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-`;
-
 const Input = styled.input`
   padding: 0.75rem;
   border: 1px solid #ccc;
@@ -25,14 +22,14 @@ const Input = styled.input`
   transition: border-color 0.3s;
 
   &:focus {
-    border-color: #007bff;
+    border-color: #000000;
     outline: none;
   }
 `;
 
 const Button = styled.button`
   padding: 0.75rem;
-  background-color: #007bff;
+  background-color: #000000;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -42,7 +39,7 @@ const Button = styled.button`
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #646464;
   }
 `;
 
@@ -52,38 +49,66 @@ const ErrorMessage = styled.p`
 `;
 
 function LoginForm() {
-    const [username, setUsername] = useState('');
+
+    const navigation = useNavigate();
+    const {mutate, isLoading, error} = useMutation(async (user) => {
+        const response = await axios.post(AUTH_LOGIN, user, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        return response.data;
+    },{
+        onSuccess: (data) => {
+            navigation('/');
+        },
+        onError: (error) => {
+            navigation("/login");
+        }
+    })
+
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const dispatch = useDispatch();
-    const { error } = useSelector((state) => state.auth);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        if (name === "email") setEmail(value);
+        else if (name === "password") setPassword(value);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(login({ username, password }));
+        const user = {
+            email: email,
+            password: password
+        }
+        mutate(user);
     };
 
     return (
         <Form onSubmit={handleSubmit}>
             <FormGroup>
-                <Label>Username</Label>
                 <Input
+                    placeholder={"이메일을 입력하세요"}
                     type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    name="email"
+                    value={email}
+                    onChange={handleChange}
                     required
                 />
             </FormGroup>
             <FormGroup>
-                <Label>Password</Label>
                 <Input
+                    placeholder={"비밀번호를 입력하세요"}
                     type="password"
+                    name="password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={handleChange}
                     required
                 />
             </FormGroup>
             <Button type="submit">Login</Button>
-            {error && <ErrorMessage>{error}</ErrorMessage>}
+            {/*{error && <ErrorMessage>{error}</ErrorMessage>}*/}
         </Form>
     );
 }
