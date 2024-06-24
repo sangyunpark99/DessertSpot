@@ -7,25 +7,37 @@ const PageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 60px); /* Adjust for bottom nav height */
-  background-color: #f9f9f9;
+  min-height: calc(100vh - 80px); /* Adjust for bottom nav height */
   width: 100%;
+  padding: 20px 10px 0px;
+`;
+
+const SignUpLogo = styled.div`
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+`;
+
+const SignUpTitle = styled.div`
+    font-weight: 700;
+    font-size: 1.5rem;
 `;
 
 const SignUpBox = styled.div`
+  margin-top: 20px;
+  height: 100%;
   background: #fff;
-  padding: 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  width: 100%;
+  width: 90%;
   max-width: 400px;
 `;
 
 function SignUpPage() {
     return (
         <PageContainer>
+            <SignUpLogo>Dessert Spot</SignUpLogo>
+            <SignUpTitle>회원가입</SignUpTitle>
             <SignUpBox>
-                <h1>SignUp</h1>
                 <SignUpForm />
             </SignUpBox>
         </PageContainer>
