@@ -1,9 +1,10 @@
+import React from 'react';
 import styled from "styled-components";
 
 const ProductContainer = styled.div`
   width: 47.5%;
   height: 40vh;
-  margin-bottom: 30px;
+  margin-bottom: 45px;
 `;
 
 const ProductImage = styled.img`
@@ -22,6 +23,12 @@ const ProductDiscount = styled.span`
   font-weight: 600;
 `;
 
+const ProductName = styled.div`
+  margin-top: 3px;
+  font-weight: 700;
+  font-size: 0.8rem;
+`;
+
 const ProductPrice = styled.span`
   font-weight: 700;
   margin-left: 5px;
@@ -33,23 +40,24 @@ const ProductShopName = styled.div`
 `;
 
 const ProductCnt = styled.div`
-  margin-top: 2px;
+  margin-top: 10px;
   font-size: 0.7rem;
   color: #9a9a9a;
 `;
 
-const Product = ({src, label}) => {
+const Product = React.forwardRef(({ src, name, price, stock}, ref) => {
     return (
-        <ProductContainer>
+        <ProductContainer ref={ref}>
             <ProductImage src={src} />
             <ProductInfo>
                 <ProductDiscount>16%</ProductDiscount>
-                <ProductPrice>23,000</ProductPrice>
+                <ProductPrice>{price}</ProductPrice>
                 <ProductShopName>Haeun</ProductShopName>
-                <ProductCnt>1,342개 구매중</ProductCnt>
+                <ProductName>{name}</ProductName>
+                <ProductCnt>{stock}개 판매중</ProductCnt>
             </ProductInfo>
         </ProductContainer>
     )
-}
+});
 
 export default Product;

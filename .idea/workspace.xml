@@ -4,19 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44d54b83-c45f-4eec-8470-147513057407" name="변경" comment="[#3] test: 인증에 관련된 UserRepositoryTest 코드 작성">
-      <change afterPath="$PROJECT_DIR$/frontend/src/constants/urls.js" afterDir="false" />
+    <list default="true" id="44d54b83-c45f-4eec-8470-147513057407" name="변경" comment="[#7] feat: 로그인, 회원가입 연동 및 테스트">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/product/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/product/dto/ProductDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/product/dto/ProductsResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/product/entity/Kind.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/product/entity/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/product/repository/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/product/service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/product.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/auth/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/auth/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/auth/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/auth/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/LoginForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/SignUpForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/SignUpForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/LoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/SignUpPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/SignUpPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/slices/authSlice.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/ExceptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/exception/ExceptionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/exception/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/exception/ErrorCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/jwt/JwtAuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/jwt/JwtAuthenticationEntryPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Product.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Products.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Products.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +53,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="Record" />
       </list>
     </option>
   </component>
@@ -59,12 +68,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "sangyunpark99"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;sangyunpark99&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -95,6 +104,7 @@
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/developer/IdeaProjects/DessertSpot/frontend/src/assets&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -102,7 +112,13 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA 2.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
@@ -118,6 +134,11 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration name="data.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/backend/src/main/resources/data.sql" />
+      <script-mode>FILE</script-mode>
+      <method v="2" />
+    </configuration>
     <configuration name="UserRepositoryTest.사용자를_저장한다" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -254,9 +275,11 @@
       <item itemvalue="Gradle.UserRepositoryTest.이메일_통해_사용자_조회한다" />
       <item itemvalue="Gradle.UserRepositoryTest.이메일로_존재하지_않는_사용자_조회한다" />
       <item itemvalue="Spring Boot.DessertSpotApplication" />
+      <item itemvalue="데이터베이스 스크립트.data.sql" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="데이터베이스 스크립트.data.sql" />
         <item itemvalue="Gradle.UserRepositoryTest.이메일로_존재하지_않는_사용자_조회한다" />
         <item itemvalue="Gradle.UserRepositoryTest.이메일_통해_사용자_조회한다" />
         <item itemvalue="Gradle.UserRepositoryTest.사용자를_저장한다" />
@@ -274,6 +297,8 @@
       <workItem from="1718633846969" duration="22734000" />
       <workItem from="1718781011385" duration="5484000" />
       <workItem from="1718796270409" duration="34249000" />
+      <workItem from="1719531710269" duration="30069000" />
+      <workItem from="1719916255647" duration="5190000" />
     </task>
     <task id="LOCAL-00001" summary="[#3] feat: 로그인, 회원가입 Request Validation 처리하기">
       <option name="closed" value="true" />
