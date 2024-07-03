@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/backend/.idea/DessertSpot.iml" filepath="$PROJECT_DIR$/backend/.idea/DessertSpot.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sangyunpark99.DessertSpot.main.iml" filepath="$PROJECT_DIR$/.idea/modules/sangyunpark99.DessertSpot.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sangyunpark99.DessertSpot.test.iml" filepath="$PROJECT_DIR$/.idea/modules/sangyunpark99.DessertSpot.test.iml" />
     </modules>
   </component>
 </project>
