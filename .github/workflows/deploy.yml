@@ -24,3 +24,5 @@ jobs:
 
       - name: Run tests with Gradle
         run: cd backend && ./gradlew test
+
+# ci test
