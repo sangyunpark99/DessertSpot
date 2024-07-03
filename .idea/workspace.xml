@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44d54b83-c45f-4eec-8470-147513057407" name="변경" comment="[#9] feat: 디저트 상품을 가져오는 기능 구현">
-      <change afterPath="$PROJECT_DIR$/.idea/modules/sangyunpark99.DessertSpot.test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/product/controller/ProductController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/product/dto/ProductDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/product/dto/ProductsResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/product/entity/Kind.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/product/entity/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/product/repository/ProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/domain/product/service/ProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/product.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/test/java/sangyunpark99/dessertspot/product/controller/ProductControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/test/java/sangyunpark99/dessertspot/product/repository/ProductRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/test/java/sangyunpark99/dessertspot/product/service/ProductServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/ExceptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/exception/ExceptionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/exception/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/exception/ErrorCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/sangyunpark99/dessertspot/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/sangyunpark99/dessertspot/DessertSpotApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/sangyunpark99/dessertspot/DessertSpotApplicationTests.java" afterDir="false" />
-    </list>
+    <list default="true" id="44d54b83-c45f-4eec-8470-147513057407" name="변경" comment="[#9] feat: 디저트 상품을 가져오는 기능 구현" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -294,6 +273,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Gradle.UserRepositoryTest.이메일로_존재하지않는_사용자를_확인한다" />
       <item itemvalue="Gradle.'sangyunpark99.DessertSpot.test'에 있는 테스트" />
       <item itemvalue="Gradle.'sangyunpark99.dessertspot'에 있는 테스트" />
       <item itemvalue="Gradle.DessertSpotApplicationTests" />
