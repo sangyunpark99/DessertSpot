@@ -2,30 +2,21 @@ import styled from "styled-components";
 import Product from "./Product";
 import {useInfiniteQuery} from "react-query";
 import {useCallback, useEffect, useRef} from "react";
-import products from "../data/products";
 
 const ProductsContainer = styled.div`
-  padding-bottom: 60px;
+  padding-bottom: 75px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 `;
 
-const ITEMS_PER_PAGE = 2;
+const ITEMS_PER_PAGE = 4;
 
-const fetchProducts = async ({ pageParam = 1 }) => {
-    const startIndex = (pageParam - 1) * ITEMS_PER_PAGE;
-    const endIndex = startIndex + ITEMS_PER_PAGE;
-    const paginatedProducts = products.slice(startIndex, endIndex);
-
-    return { data: paginatedProducts, nextPage: paginatedProducts.length ? pageParam + 1 : null };
-};
-
-// const fetchProducts = async ({pageParam = 1}) => {
-//     const response = await fetch(``);
-//     const data = await response.json();
-//     return { data: data.products, nextPage: pageParam + 1};
-// }
+const fetchProducts = async ({pageParam = 0}) => {
+    const response = await fetch(`/products?cursor=${pageParam}&pageSize=${ITEMS_PER_PAGE}`);
+    const data = await response.json();
+    return { data: data.products, nextCursor: data.nextCursor};
+}
 
 const Products = () => {
 
@@ -35,18 +26,22 @@ const Products = () => {
         hasNextPage, // 다음 페이지 존재 여부 확인
         isFetchingNextPage,
     } = useInfiniteQuery('products', fetchProducts, {
-        getNextPageParam: (lastPage) => lastPage.nextPage ?? false, // 다음 페이지 파라미터 설정
+        getNextPageParam: (lastPage) => lastPage.nextCursor ?? false, // 다음 페이지 파라미터 설정
     });
 
     const observerElem = useRef(null); // 관찰할 요소 참조
+    const loadingRef = useRef(false); // useRef를 사용하는 이유 : 컴포넌트의 리렌더링 없이 사용하기 위해
 
     const handleObserver = useCallback((entries) => { // 의존성 배열에 포함된 값이 변경될 때마다 새로운 함수
-        console.log("handleObserver 호출");
         const [entry] = entries;
-        if(entry.isIntersecting && hasNextPage) {
-            fetchNextPage();
+
+        if(entry.isIntersecting && hasNextPage && !loadingRef.current) {
+            loadingRef.current = true; // 로딩인 상태를 true로 설정
+            fetchNextPage().finally(() => {
+               loadingRef.current = false; // 로딩이 끝나는 경우 false로 설정
+            });
         }
-    },[fetchNextPage, hasNextPage]);
+    },[fetchNextPage, hasNextPage, loadingRef.current]);
 
     useEffect(() => {
         const observer = new IntersectionObserver(handleObserver, {
@@ -55,24 +50,33 @@ const Products = () => {
             threshold: 1.0,// 관찰 대상이 100% 뷰포트에 보일 때 콜백 실행
         });
 
-        if(observerElem.current) observer.observe(observerElem.current);
+        const currentElem = observerElem.current;
 
-        // 클린업 함수로 관찰을 멈춘다.
-        return () => {
-            if (observerElem.current) observer.unobserve(observerElem.current);
+        if (currentElem) observer.observe(currentElem);
+
+
+        return () => { // 클린업으로 함수 관찰 멈추기
+            if (currentElem) observer.unobserve(currentElem);
         }
-    }, [handleObserver]);
+    }, [handleObserver,observerElem.current]);
 
     return (
         <ProductsContainer>
             {data?.pages.map((page, pageIndex) => (
-                page.data.map((product, productIndex) => (
-                    <Product key={`${pageIndex}-${productIndex}`} src={product.imageUrl} label={product.label} />
-                ))
+                page.data.map((product, productIndex) => {
+                    const isLast = pageIndex === data.pages.length - 1 && productIndex === page.data.length - 1;
+                    return (
+                        <Product
+                            key={`${pageIndex}-${productIndex}`}
+                            src={product.imageUrl}
+                            name={product.name}
+                            price={product.price.toLocaleString()}
+                            stock={product.stock.toLocaleString()}
+                            ref={isLast ? observerElem : null}
+                        />
+                    );
+                })
             ))}
-            <div ref={observerElem}>
-                {isFetchingNextPage ? 'Loading more...' : ''}
-            </div>
         </ProductsContainer>
     );
 }

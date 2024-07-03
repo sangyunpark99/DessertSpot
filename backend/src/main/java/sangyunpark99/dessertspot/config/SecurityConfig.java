@@ -57,7 +57,8 @@ public class SecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> web.ignoring().requestMatchers(
                 "/auth/signup",
-                "/auth/login"
+                "/auth/login",
+                "/products/**"
         );
     }
 }
